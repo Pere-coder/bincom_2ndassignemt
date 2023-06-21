@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Polling Unit Results</title>
+</head>
+<body>
+    <h1>Polling Unit Results</h1>
+    {% for result in results %}
+        <h2>Unique ID: {{ result.polling_unit_uniqueid }}</h2>
+        <p>Party Abbreviation: {{ result.party_abbreviation }}</p>
+        <p>Party Score: {{ result.party_score }}</p>
+        <p>Entered By: {{ result.entered_by_user }}</p>
+        <p>Date Entered: {{ result.date_entered }}</p>
+        <p>User IP Address: {{ result.user_ip_address }}</p>
+        <hr>
+    {% empty %}
+        <p>No results found.</p>
+    {% endfor %}
+</body>
+</html>

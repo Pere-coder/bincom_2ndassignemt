@@ -34,6 +34,7 @@ class AnnouncedLgaResult(models.Model):
         db_table = 'announced_lga_results'
         
 class AnnouncedPuResult(models.Model):
+
     result_id = models.AutoField(primary_key=True)
     polling_unit_uniqueid = models.CharField(max_length=50)
     party_abbreviation = models.CharField(max_length=4)
