@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Polling Unit Result</title>
+</head>
+<body>
+    <h1>Enter Results for All Parties - New Polling Unit</h1>
+    <form method="post" action="{% url 'new_polling_unit_result' %}">
+        {% csrf_token %}
+        <label for="polling_unit_id">Polling Unit ID:</label>
+        <input type="text" name="polling_unit_id" id="polling_unit_id" required>
+
+        <h2>Enter Results for All Parties:</h2>
+        {% for party in parties %}
+            <label for="{{ party.partyid }}">{{ party.partyname }}</label>
+            <input type="number" name="party_score" id="{{ party.partyid }}" required>
+        {% endfor %}
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

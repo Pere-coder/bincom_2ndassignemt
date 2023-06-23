@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import P_unit_results, L_govn_results
+from app.views import P_unit_results, L_govn_results, new_polling_unit_result
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('Punit/', P_unit_results, name="P_unit_results"),
-    path('Lgovn/', L_govn_results, name="L_govn_results")
+    path('Lgovn/', L_govn_results, name="L_govn_results"),
+    path('Npol/', new_polling_unit_result, name="new_polling_unit_result"),
 ]

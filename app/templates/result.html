@@ -4,8 +4,53 @@
     <title>Local Government Result</title>
 </head>
 <body>
-    <h1>Local Government Result</h1>
-    <p>Local Government: {{ lga.lga_name }}</p>
-    <p>Summed Total Result: {{ total_result }}</p>
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Local Government Result</title>
+</head>
+<body>
+    <h1>Select Local Government and View Result</h1>
+    <form method="post" action="{% url 'L_govn_results' %}">
+        {% csrf_token %}
+        <select name="lga_id">
+            {% for lga in lgas %}
+                <option value="{{ lga.lga_id }}">{{ lga.lga_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="View Result">
+    </form>
+
+    {% if polling_units %}
+        <h2>Local Government Result</h2>
+        <p>Local Government: {{ lga.lga_name }}</p>
+        <p>Summed Total Result: {{ total_result }}</p>
+        <h3>Polling Units:</h3>
+        <ul>
+            {% for polling_unit in polling_units %}
+                <li>{{ polling_unit.polling_unit_name }} - {{ polling_unit.party_score }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </body>
+</html>
+
+
+    {% comment %} <div>
+   
+        <form method='POST'>
+            {% csrf_token %}
+            <Label>Polling unit</Label>
+            <input type='number' id='in'/>
+           
+            <button onclick={get()}>Submit</button>
+        </form>
+    <div>
+    <h1>Local Government Result</h1>
+    <p>The unique ID of this Polling unit is <p id='id'>hello</p></p>
+    <p>Summed Total Result of Polling unit is: {{ total_result }}</p>
+     {% endcomment %}
+
+</body>
+
 </html>
